@@ -68,6 +68,7 @@ class Main {
           case 8:
             System.out.print ("Conteo de debitos: " + i + "\n");
             System.out.print ("Conteo de creditos: " + j + "\n");
+            break;
           case 9:
             for (int p = 0; p < credito.length; p++ ){
                 System.out.print ("El " + p + " credito es:" + credito[p] + "\n");
