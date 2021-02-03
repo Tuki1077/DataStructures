@@ -19,7 +19,7 @@ class Main {
 
     boolean start = true;
       while (start == true){
-        System.out.print(" 1. Ingresar debito\n 2. Ingrese credito\n 3. Total de debitos\n 4. Total creditos\n 5. Saldo\n 6. Promedio de debitos\n 7. Monto de debito mas grande\n 8. Conteo\n 9. Arrays\n 10. Eliminar\n ");
+        System.out.print(" 1. Ingresar debito\n 2. Ingrese credito\n 3. Total de debitos\n 4. Total creditos\n 5. Saldo\n 6. Promedio de debitos\n 7. Monto de debito mas grande\n 8. Conteo de ingresos\n 9. Mostrar Arrays\n 10. Eliminar creditos por numero de ingreso \n ");
         int option = userinput.nextInt();
         
         switch(option){
