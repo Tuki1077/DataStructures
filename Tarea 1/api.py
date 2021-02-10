@@ -1,26 +1,9 @@
-import random
+from random import randint
 import flask
 from flask import request, jsonify
 
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
-
-def crear_lista(cantidad, modo="unordered"):
-    arr = []
-    for i in range(cantidad):
-        r = random.randint(0, cantidad)
-        arr.append(r)
-    if (modo == "ordered"):
-        arr.sort()
-    return arr
-
-def binary_search(valor, cantidad):
-    lista = crear_lista(cantidad, "ordered")
-    return binary_search_algorithm(valor, lista, 0, len(lista))
-
-def linear_search (valor, cantidad):
-    lista = crear_lista(cantidad)
-    return linear_search_algorithm(valor,lista)
 
 def linear_search_algorithm(valor,lista):
     for counter in range (len(lista)):
@@ -42,24 +25,39 @@ def binary_search_algorithm(element, array, start, end):
     else: 
         return binary_search_algorithm(element, array, mid+1, end)
 
-@app.route('/', methods=['GET'])
-def home():
-    return '''<h1>Distant Reading Archive</h1>
-<p>A prototype API for distant reading of science fiction novels.</p>'''
+@app.route('/binary_search/<int:N>/<int:Value>', methods=['GET'])
+def api_binary(N, Value):
+    arr = []
+    contador = 0
+    while contador <= N:
+        arr.append(randint(0,50))
+        contador = contador + 1
+    arr.sort()
+    Search = binary_search_algorithm(Value, arr, 0, len(arr)) 
 
-@app.route('/binary_search', methods=['GET'])
-def api_binary(): 
-  N = int(request.args.get('N'))
-  value = int(request.args.get('Value'))
+    if Search == -1:
+        print ("El numero no esta")
+        return "False"
+    else:
+        print (f"El numero esta en la posicion {Search}")
+        return "True"
 
-  return str(binary_search(value,N))
+@app.route('/linear_search/<int:N>/<int:Value>', methods=['GET'])
+def api_linear(N, Value): 
+    arr = []
+    contador = 0
+    while contador <= N:
+        arr.append(randint(0,50))
+        contador = contador + 1
+    arr.sort()
+    Search = linear_search_algorithm(Value, arr) 
 
-@app.route('/linear_search', methods=['GET'])
-def api_linear(): 
-  N = int(request.args.get('N'))
-  value = int(request.args.get('Value'))
-
-  return str(linear_search(value,N))
+    if Search == -1:
+        print ("El numero no esta")
+        return "False"
+    else:
+        print (f"El numero esta en la posicion {Search}")
+        return "True"
 
 
 app.run()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
